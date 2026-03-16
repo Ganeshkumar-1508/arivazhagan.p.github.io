@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Arivazhagan P | Pharmacist & Quality Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0a1628;
+    --bg2: #0f1f3d;
+    --accent: #00d4aa;
+    --accent2: #4fc3f7;
+    --gold: #f5c842;
+    --white: #f0f4ff;
+    --muted: #7a90b8;
+    --card: rgba(255,255,255,0.04);
+    --border: rgba(0,212,170,0.18);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 6vw;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+  .nav-links { display:flex; gap:2.2rem; list-style:none; }
+  .nav-links a {
+    text-decoration:none; color: var(--muted);
+    font-size: 0.9rem; font-weight:500; letter-spacing:0.5px;
+    transition: color 0.3s;
+    text-transform: uppercase;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items:center; justify-content:center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 6vw 60px;
+  }
+
+  /* Molecule background */
+  .molecule-bg {
+    position: absolute; inset:0; pointer-events:none;
+    opacity: 0.07;
+  }
+  .molecule-bg svg { width:100%; height:100%; }
+
+  /* Green glow blobs */
+  .blob {
+    position:absolute; border-radius:50%;
+    filter: blur(80px); pointer-events:none; z-index:0;
+  }
+  .blob1 { width:500px; height:500px; background:rgba(0,212,170,0.12); top:-100px; right:-100px; }
+  .blob2 { width:400px; height:400px; background:rgba(79,195,247,0.08); bottom:-80px; left:-80px; }
+
+  .hero-inner {
+    position:relative; z-index:1;
+    display:flex; align-items:center; gap:6vw;
+    max-width: 1100px; width:100%;
+  }
+
+  .hero-photo {
+    flex-shrink:0;
+    width: 240px; height:240px;
+    border-radius:50%;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 40px rgba(0,212,170,0.3), 0 0 80px rgba(0,212,170,0.1);
+    overflow:hidden;
+    background: var(--bg2);
+    display:flex; align-items:center; justify-content:center;
+    font-size:5rem;
+    animation: floatY 4s ease-in-out infinite;
+  }
+  @keyframes floatY {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero-text { flex:1; }
+  .hero-tag {
+    display:inline-block;
+    background: rgba(0,212,170,0.1);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size:0.78rem; letter-spacing:2px; text-transform:uppercase;
+    padding:5px 14px; border-radius:20px; margin-bottom:1.2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight:900; line-height:1.1;
+    color: var(--white);
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero-name span { color: var(--accent); }
+  .hero-title {
+    font-size: 1.1rem; color: var(--accent2);
+    margin: 0.8rem 0 1.4rem;
+    font-weight:400;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-desc {
+    color: var(--muted); font-size: 0.97rem; line-height:1.8;
+    max-width:520px;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .hero-btns {
+    display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--accent); color: #0a1628;
+    padding:12px 28px; border-radius:8px;
+    font-weight:600; font-size:0.9rem; text-decoration:none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing:0.5px;
+  }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,212,170,0.35); }
+  .btn-outline {
+    border:1px solid var(--border); color:var(--white);
+    padding:12px 28px; border-radius:8px;
+    font-weight:500; font-size:0.9rem; text-decoration:none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color:var(--accent); color:var(--accent); }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(24px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* Rx pill ribbon */
+  .rx-ribbon {
+    position:absolute; bottom:30px; right:6vw;
+    display:flex; gap:1rem; align-items:center;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+  .rx-pill {
+    background: var(--card); border:1px solid var(--border);
+    padding:8px 18px; border-radius:30px;
+    font-size:0.78rem; color:var(--muted);
+    display:flex; align-items:center; gap:6px;
+  }
+  .rx-pill span { color:var(--accent); font-weight:600; }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 90px 6vw; }
+  .section-label {
+    font-size:0.75rem; letter-spacing:3px; text-transform:uppercase;
+    color:var(--accent); margin-bottom:0.5rem;
+  }
+  .section-title {
+    font-family:'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight:700; margin-bottom:2.5rem;
+    color:var(--white);
+  }
+  .divider {
+    width:60px; height:3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin-bottom:2.5rem;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: linear-gradient(135deg, var(--bg2) 0%, var(--bg) 100%);
+    border-top: 1px solid var(--border);
+  }
+  .about-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:4vw;
+    align-items:start; max-width:1100px; margin:0 auto;
+  }
+  .about-info p {
+    color:var(--muted); line-height:1.9; margin-bottom:1.2rem; font-size:0.97rem;
+  }
+  .about-stats {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:2rem;
+  }
+  .stat-box {
+    background: var(--card); border:1px solid var(--border);
+    border-radius:12px; padding:20px;
+    text-align:center;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .stat-box:hover { border-color:var(--accent); transform:translateY(-4px); }
+  .stat-box .num {
+    font-family:'Playfair Display',serif;
+    font-size:2rem; font-weight:700; color:var(--accent);
+  }
+  .stat-box .lbl { font-size:0.78rem; color:var(--muted); margin-top:4px; }
+
+  .about-skills h3 {
+    font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:1.5rem;
+    color:var(--accent2);
+  }
+  .skill-tags {
+    display:flex; flex-wrap:wrap; gap:0.7rem;
+  }
+  .skill-tag {
+    background:rgba(0,212,170,0.07); border:1px solid var(--border);
+    color:var(--white); font-size:0.82rem; padding:7px 16px;
+    border-radius:20px; transition:background 0.2s, border-color 0.2s;
+  }
+  .skill-tag:hover { background:rgba(0,212,170,0.15); border-color:var(--accent); }
+
+  /* ── EDUCATION ── */
+  #education { border-top:1px solid var(--border); }
+  .edu-timeline { max-width:800px; }
+  .edu-item {
+    display:flex; gap:2rem; margin-bottom:2.5rem;
+    position:relative;
+  }
+  .edu-item::before {
+    content:''; position:absolute; left:19px; top:40px; bottom:-20px;
+    width:2px; background:var(--border);
+  }
+  .edu-item:last-child::before { display:none; }
+  .edu-dot {
+    flex-shrink:0; width:40px; height:40px; border-radius:50%;
+    background:var(--bg2); border:2px solid var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1rem; margin-top:4px;
+    box-shadow:0 0 14px rgba(0,212,170,0.2);
+  }
+  .edu-body {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:20px 24px; flex:1;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .edu-body:hover { border-color:var(--accent); transform:translateX(6px); }
+  .edu-degree { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
+  .edu-inst { color:var(--accent2); font-size:0.88rem; margin:4px 0; }
+  .edu-meta { display:flex; gap:1.5rem; margin-top:8px; }
+  .edu-yr { font-size:0.8rem; color:var(--muted); }
+  .edu-gpa {
+    font-size:0.8rem; color:var(--gold); font-weight:600;
+    background:rgba(245,200,66,0.1); padding:2px 10px; border-radius:10px;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience {
+    background: linear-gradient(135deg, var(--bg2) 0%, var(--bg) 100%);
+    border-top:1px solid var(--border);
+  }
+  .exp-cards { max-width:900px; display:flex; flex-direction:column; gap:2rem; }
+  .exp-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:16px; padding:28px 30px;
+    transition: border-color 0.3s, transform 0.3s;
+    position:relative; overflow:hidden;
+  }
+  .exp-card::before {
+    content:''; position:absolute; left:0; top:0; bottom:0;
+    width:4px; background:var(--accent);
+    border-radius:4px 0 0 4px;
+  }
+  .exp-card:nth-child(2)::before { background:var(--accent2); }
+  .exp-card:nth-child(3)::before { background:var(--gold); }
+  .exp-card:nth-child(4)::before { background:#f87171; }
+  .exp-card:hover { border-color:var(--accent); transform:translateX(6px); }
+  .exp-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; }
+  .exp-role { font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--white); }
+  .exp-company { color:var(--accent2); font-size:0.9rem; margin-top:3px; }
+  .exp-period {
+    background:rgba(0,212,170,0.08); border:1px solid var(--border);
+    padding:5px 14px; border-radius:20px;
+    font-size:0.78rem; color:var(--muted); white-space:nowrap;
+  }
+  .exp-list { margin-top:1rem; list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+  .exp-list li {
+    color:var(--muted); font-size:0.9rem; line-height:1.7;
+    padding-left:1.2rem; position:relative;
+  }
+  .exp-list li::before {
+    content:'▹'; position:absolute; left:0; color:var(--accent); font-size:0.8rem; top:2px;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    border-top:1px solid var(--border);
+    text-align:center;
+  }
+  .contact-inner { max-width:700px; margin:0 auto; }
+  .contact-desc { color:var(--muted); line-height:1.8; margin-bottom:3rem; font-size:0.97rem; }
+  .contact-cards {
+    display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap;
+    margin-bottom:3rem;
+  }
+  .contact-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:16px; padding:24px 28px;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    text-decoration:none; min-width:150px;
+    transition:border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .contact-card:hover {
+    border-color:var(--accent); transform:translateY(-6px);
+    box-shadow:0 12px 32px rgba(0,212,170,0.15);
+  }
+  .contact-card .icon { font-size:2rem; }
+  .contact-card .c-label { font-size:0.78rem; text-transform:uppercase; letter-spacing:1px; color:var(--muted); }
+  .contact-card .c-val { font-size:0.88rem; color:var(--white); word-break:break-all; text-align:center; }
+
+  /* Insta gradient */
+  .cc-insta:hover { border-color:#e1306c; box-shadow:0 12px 32px rgba(225,48,108,0.2); }
+  .cc-wa:hover { border-color:#25d366; box-shadow:0 12px 32px rgba(37,211,102,0.2); }
+  .cc-mail:hover { border-color:var(--accent2); box-shadow:0 12px 32px rgba(79,195,247,0.2); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align:center; padding:24px 6vw;
+    border-top:1px solid var(--border);
+    color:var(--muted); font-size:0.82rem;
+  }
+  footer span { color:var(--accent); }
+
+  /* ── Molecule SVG pattern ── */
+  .rx-mark {
+    font-family:'Playfair Display',serif;
+    font-size:3rem; color:var(--accent); opacity:0.06;
+    position:absolute; user-select:none; pointer-events:none;
+    font-weight:900;
+  }
+
+  /* Responsive */
+  @media(max-width:768px){
+    .hero-inner { flex-direction:column; text-align:center; }
+    .hero-photo { width:180px; height:180px; }
+    .hero-desc { margin:0 auto; }
+    .hero-btns { justify-content:center; }
+    .rx-ribbon { display:none; }
+    .about-grid { grid-template-columns:1fr; }
+    nav { padding:14px 4vw; }
+    .nav-links { gap:1.2rem; }
+    .nav-links a { font-size:0.78rem; }
+    section { padding:70px 5vw; }
+  }
+  @media(max-width:480px){
+    .nav-links { gap:0.8rem; }
+    .contact-cards { flex-direction:column; align-items:center; }
+    .contact-card { width:100%; max-width:280px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Arivazhagan P</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <!-- Floating Rx watermarks -->
+  <span class="rx-mark" style="top:12%;left:4%;">℞</span>
+  <span class="rx-mark" style="top:60%;right:5%;font-size:5rem;">⚕</span>
+  <span class="rx-mark" style="bottom:10%;left:30%;font-size:2rem;">⚗</span>
+
+  <!-- Molecule pattern SVG -->
+  <div class="molecule-bg">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>.mc{fill:none;stroke:#00d4aa;stroke-width:1.5}.md{fill:#00d4aa}</style>
+      </defs>
+      <!-- Hexagon molecular structure -->
+      <g opacity="0.8">
+        <polygon class="mc" points="200,120 240,100 280,120 280,160 240,180 200,160"/>
+        <polygon class="mc" points="280,120 320,100 360,120 360,160 320,180 280,160"/>
+        <polygon class="mc" points="360,120 400,100 440,120 440,160 400,180 360,160"/>
+        <line class="mc" x1="240" y1="180" x2="240" y2="230"/>
+        <circle class="md" cx="240" cy="240" r="6"/>
+        <line class="mc" x1="320" y1="100" x2="320" y2="50"/>
+        <circle class="md" cx="320" cy="42" r="6"/>
+        <line class="mc" x1="400" y1="180" x2="400" y2="230"/>
+        <circle class="md" cx="400" cy="240" r="6"/>
+
+        <polygon class="mc" points="700,300 740,280 780,300 780,340 740,360 700,340"/>
+        <polygon class="mc" points="780,300 820,280 860,300 860,340 820,360 780,340"/>
+        <line class="mc" x1="740" y1="280" x2="740" y2="230"/>
+        <circle class="md" cx="740" cy="222" r="6"/>
+        <line class="mc" x1="820" y1="360" x2="820" y2="410"/>
+        <circle class="md" cx="820" cy="418" r="6"/>
+        <line class="mc" x1="860" y1="310" x2="920" y2="310"/>
+        <circle class="md" cx="928" cy="310" r="6"/>
+
+        <polygon class="mc" points="900,500 940,480 980,500 980,540 940,560 900,540"/>
+        <line class="mc" x1="940" y1="560" x2="940" y2="610"/>
+        <circle class="md" cx="940" cy="618" r="6"/>
+        <line class="mc" x1="980" y1="510" x2="1030" y2="510"/>
+        <circle class="md" cx="1038" cy="510" r="8"/>
+
+        <line class="mc" x1="150" y1="400" x2="200" y2="350"/>
+        <circle class="md" cx="145" cy="405" r="6"/>
+        <polygon class="mc" points="200,320 240,300 280,320 280,360 240,380 200,360"/>
+        <line class="mc" x1="280" y1="340" x2="330" y2="340"/>
+        <circle class="md" cx="338" cy="340" r="6"/>
+        <line class="mc" x1="240" y1="380" x2="240" y2="430"/>
+        <circle class="md" cx="240" cy="438" r="6"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-photo">🧪</div>
+    <div class="hero-text">
+      <div class="hero-tag">📋 B.Pharm · Quality & Product Support</div>
+      <h1 class="hero-name">Arivazhagan <span>P</span></h1>
+      <p class="hero-title">Manager, Quality & Product Support · Pharmaceutical Professional</p>
+      <p class="hero-desc">
+        A seasoned pharmacist and quality professional with 8+ years of experience spanning hospital pharmacy, pharmaceutical manufacturing, and quality management. Dedicated to patient safety, regulatory compliance, and product excellence.
+      </p>
+      <div class="hero-btns">
+        <a href="#experience" class="btn-primary">View Experience</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="rx-ribbon">
+    <div class="rx-pill"><span>℞</span> B.Pharm Graduate</div>
+    <div class="rx-pill"><span>8+</span> Years Experience</div>
+    <div class="rx-pill"><span>⚕</span> Cuddalore, TN</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-info">
+      <div class="section-label">Who I Am</div>
+      <h2 class="section-title">About Me</h2>
+      <div class="divider"></div>
+      <p>I am a dedicated pharmaceutical professional with a Bachelor of Pharmacy degree and over 8 years of hands-on experience across hospital pharmacy, pharmaceutical production, and quality management roles.</p>
+      <p>My journey spans working at leading institutions — from UDAYA HOSPITAL to Cethar Hospitals and now Medi Miracle Pharmaceuticals — where I've developed a strong foundation in patient care, drug safety, and quality systems.</p>
+      <p>I am passionate about ensuring medication safety, streamlining quality processes, and mentoring pharmacy teams to deliver the best outcomes for patients and stakeholders alike.</p>
+
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="num">8+</div>
+          <div class="lbl">Years of Experience</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">3</div>
+          <div class="lbl">Major Organizations</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">B.Pharm</div>
+          <div class="lbl">Qualified Pharmacist</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">QMS</div>
+          <div class="lbl">Quality Management</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-skills">
+      <h3>Core Skills &amp; Competencies</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">📞 Communication</span>
+        <span class="skill-tag">👥 Team Leadership</span>
+        <span class="skill-tag">🔍 Problem Solving</span>
+        <span class="skill-tag">⚖️ Decision Making</span>
+        <span class="skill-tag">🏥 Patient Counseling</span>
+        <span class="skill-tag">📦 Purchasing Management</span>
+        <span class="skill-tag">📋 Quality Management</span>
+        <span class="skill-tag">📁 Documentation Control</span>
+        <span class="skill-tag">🔎 Auditing Processes</span>
+        <span class="skill-tag">💊 Drug Interactions</span>
+        <span class="skill-tag">📊 Supplier Audits</span>
+        <span class="skill-tag">🤝 Professional Ethics</span>
+      </div>
+
+      <div style="margin-top:2.5rem;">
+        <h3>Personal Details</h3>
+        <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.7rem;">
+          <div style="display:flex;gap:0.8rem;align-items:center;color:var(--muted);font-size:0.9rem;">
+            <span style="color:var(--accent);">📍</span> Cuddalore, Tamilnadu 606303
+          </div>
+          <div style="display:flex;gap:0.8rem;align-items:center;color:var(--muted);font-size:0.9rem;">
+            <span style="color:var(--accent);">🎂</span> August 19, 1994
+          </div>
+          <div style="display:flex;gap:0.8rem;align-items:center;color:var(--muted);font-size:0.9rem;">
+            <span style="color:var(--accent);">🌐</span> English &amp; Tamil
+          </div>
+          <div style="display:flex;gap:0.8rem;align-items:center;color:var(--muted);font-size:0.9rem;">
+            <span style="color:var(--accent);">🪪</span> TN77 20160003027 (LMV)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label">Academic Background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="divider"></div>
+
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <div class="edu-dot">🎓</div>
+        <div class="edu-body">
+          <div class="edu-degree">Bachelor of Pharmacy (B.Pharm)</div>
+          <div class="edu-inst">Vinayaka Missions University, Salem, Tamilnadu</div>
+          <div class="edu-meta">
+            <span class="edu-yr">📅 Aug 2016</span>
+            <span class="edu-gpa">⭐ GPA: 65%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-dot">📚</div>
+        <div class="edu-body">
+          <div class="edu-degree">Intermediate (10+2)</div>
+          <div class="edu-inst">Vani Vikash Higher Secondary School, Attur, Tamilnadu</div>
+          <div class="edu-meta">
+            <span class="edu-yr">📅 Mar 2012</span>
+            <span class="edu-gpa">⭐ GPA: 73.5%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-dot">🏫</div>
+        <div class="edu-body">
+          <div class="edu-degree">SSLC (10th Standard)</div>
+          <div class="edu-inst">Thanthai Hans Rover Higher Secondary School, Perambalur, Tamilnadu</div>
+          <div class="edu-meta">
+            <span class="edu-yr">📅 Mar 2010</span>
+            <span class="edu-gpa">⭐ GPA: 80%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-dot">📜</div>
+        <div class="edu-body">
+          <div class="edu-degree">High School Diploma</div>
+          <div class="edu-inst">Additional Course Certification</div>
+          <div class="edu-meta">
+            <span class="edu-yr">📅 May 2016</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label">Professional Journey</div>
+    <h2 class="section-title">Experience</h2>
+    <div class="divider"></div>
+
+    <div class="exp-cards">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Manager, Quality &amp; Product Support</div>
+            <div class="exp-company">🏭 Medi Miracle Pharmaceuticals, Trichy, Tamilnadu</div>
+          </div>
+          <div class="exp-period">May 2025 – Present</div>
+        </div>
+        <ul class="exp-list">
+          <li>Provided exceptional support to sales representatives in addressing client inquiries related to product specifications, performance, and potential issues.</li>
+          <li>Led cross-functional teams in developing new products, ensuring seamless integration of quality considerations throughout the entire process.</li>
+          <li>Developed comprehensive training materials across multiple departments, ensuring consistency in quality standards.</li>
+          <li>Evaluated supplier capabilities through regular audits, ensuring continued compliance with established guidelines.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Pharmacy Incharge</div>
+            <div class="exp-company">🏥 Cethar Hospitals, Trichy</div>
+          </div>
+          <div class="exp-period">Dec 2018 – Apr 2025</div>
+        </div>
+        <ul class="exp-list">
+          <li>Supervised and provided guidance to pharmacy technicians in the preparation and distribution of medication orders.</li>
+          <li>Resolved customer inquiries concerning prescriptions, insurance coverage, pricing, and other related issues.</li>
+          <li>Advised patients on potential drug interactions, side effects, proper dose timing, and medication storage.</li>
+          <li>Supervised pharmacy staff in daily operations to ensure compliance with regulatory standards.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Pharmacist</div>
+            <div class="exp-company">🏥 UDAYA HOSPITAL, Valapadi, Salem</div>
+          </div>
+          <div class="exp-period">Jan 2017 – Jan 2018</div>
+        </div>
+        <ul class="exp-list">
+          <li>Assisted customers with prescription refills, requests for over-the-counter medications, and other health care products.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Production Executive</div>
+            <div class="exp-company">🏭 MYLAN LABORATORIES, Bangalore</div>
+          </div>
+          <div class="exp-period">Sep 2016 – Dec 2016</div>
+        </div>
+        <ul class="exp-list">
+          <li>Served as Assistant Production Coordinator in pharmaceutical manufacturing operations.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Contact Me</h2>
+    <div class="divider" style="margin:0 auto 2rem;"></div>
+    <p class="contact-desc">
+      Whether you're looking to collaborate, refer a professional, or just say hello — I'd love to hear from you. Reach out through any of the channels below.
+    </p>
+
+    <div class="contact-cards">
+      <a href="https://instagram.com" target="_blank" class="contact-card cc-insta">
+        <div class="icon">📸</div>
+        <div class="c-label">Instagram</div>
+        <div class="c-val">@arivazhagan</div>
+      </a>
+
+      <a href="https://wa.me/919597554706" target="_blank" class="contact-card cc-wa">
+        <div class="icon">💬</div>
+        <div class="c-label">WhatsApp</div>
+        <div class="c-val">+91-9597554706</div>
+      </a>
+
+      <a href="mailto:arivazhagan.pharma.2016@gmail.com" class="contact-card cc-mail">
+        <div class="icon">✉️</div>
+        <div class="c-label">Email</div>
+        <div class="c-val">arivazhagan.pharma.2016@gmail.com</div>
+      </a>
+    </div>
+
+    <a href="mailto:arivazhagan.pharma.2016@gmail.com?subject=Hello Arivazhagan&body=Hi Arivazhagan, I would like to get in touch with you." class="btn-primary" style="display:inline-block;margin-top:1rem;">
+      Send a Message 
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span>Arivazhagan P</span> · Pharmacist &amp; Quality Professional · © 2026</p>
+  <p style="margin-top:6px;font-size:0.75rem;">Cuddalore, Tamilnadu ·  Committed to Pharmaceutical Excellence</p>
+</footer>
+
+<script>
+  // Smooth active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#'+current ? 'var(--accent)' : '';
+    });
+  });
+
+  // Intersection observer for fade-in cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
